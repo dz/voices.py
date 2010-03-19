@@ -4,12 +4,12 @@ voices.py
 What is it?
 -----------
 
-**voices.py** is a self-contained python script that starts a webserver that listen on an user-entered port that allows a visitor to remotely send text-to-speech commands on OS X machines.
+**voices.py** is a self-contained python script that starts a webserver that listens on a user-entered IP and port that allows a visitor to remotely send text-to-speech commands on OS X machines.
 
 What is it good for?
 --------------------
 
-The impetus for this was the machines that coworkers would leave unattended **and unlocked**.  If you find such a machine, do the following:
+The machines that coworkers would leave unattended **and unlocked** is the primary impetus.  If you find such a machine, do the following:
 
 1. Open up Terminal.app
 
@@ -26,6 +26,8 @@ The impetus for this was the machines that coworkers would leave unattended **an
 4. In a browser, go to the entered IP and port number.  For example, ``http://192.168.1.199:8888``.  You should be presented with a page that has a select box and a text box.  Simply choose a voice and enter a message.
 
 5. Press "Say".
+
+6. Profit.
 
 Why do I want to do this?
 -------------------------
