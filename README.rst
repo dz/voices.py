@@ -19,7 +19,7 @@ The machines that coworkers would leave unattended **and unlocked** is the prima
     $ mkdir ~/.voices
     $ cd ~/.voices
     $ curl -O http://github.com/dz/voices.py/raw/master/voices.py
-    $ python voices <yourcurrentip>:<port>
+    $ python voices.py
 
 3. Now press control-a then "d" to detach the screen session.
 
@@ -44,3 +44,23 @@ Requirements
 ------------
 
 Mac OS X, obviously.  And also Python.
+
+Usage details
+-------------
+
+Without an argument, **voices.py** will attempt to autodiscover your IP and automatically use 8888 as the port::
+
+    $ python voices.py 
+    Explicit IP and port not entered.  Attempted to autodiscover IP address.
+    Serving on 192.168.1.199:8888
+
+With an argument, **voices.py** will use the IP and port you entered.  Note that python does not have permission to bind to IPs that are not used by your machine::
+
+    $ python voices.py 192.168.1.199:8080
+    Serving on 192.168.1.199:8080
+
+For a short help, do use ``--help``::
+
+    $ python voices.py --help
+    Usage: python voices.py x.x.x.x:port
+
