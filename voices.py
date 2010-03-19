@@ -1,4 +1,4 @@
-import sys, getopt, urlparse, cgi
+import sys, getopt, urlparse, cgi, socket
 from subprocess import call
 from wsgiref.util import setup_testing_defaults, request_uri
 from wsgiref.simple_server import make_server
@@ -29,10 +29,14 @@ def main():
         if o in ("-h", "--help"):
             print "Usage: python voices.py x.x.x.x:port\n"
             sys.exit(0)
-    if len(args) != 1: 
+    if len(args) > 1: 
         print "incorrect usage. for help use --help"
         sys.exit(2)
-    ip, port = args[0].split(':')
+    if len(args) == 1:
+        ip, port = args[0].split(':')
+    else:
+        print "Explicit IP and port not entered.  Attempted to autodiscover IP address."
+        ip, port = (socket.gethostbyname(socket.gethostname()), 8888)
     httpd = make_server(ip, int(port), voices_server)
     print "Serving on %s:%s" % (ip, port)
     httpd.serve_forever()
