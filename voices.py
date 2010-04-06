@@ -12,7 +12,9 @@ def voices_server(environ, start_response):
     voice, message = (qs.get('v') and qs['v'][0] or "",qs.get('m') and qs['m'][0] or "")
     response_message = ""
     if voice and message: 
+        call(['osascript', '-e', 'set Volume 5'])
         call(['say', '-v', '%s' % voice, '%s' % message])
+        call(['osascript', '-e', 'set Volume 0'])
         response_message = "<i>Say command sent.</i><br /><br />"
     return """%s<form action="" method="get">Voice: <select name="v">%s</select><br/><br />
             message:<br/><textarea style="height: 100px; width:400px;" name="m">%s</textarea>
@@ -36,7 +38,7 @@ def main():
         ip, port = args[0].split(':')
     else:
         print "Explicit IP and port not entered.  Attempted to autodiscover IP address."
-        ip, port = (socket.gethostbyname(socket.gethostname()), 8888)
+        ip, port = (socket.gethostbyname(socket.gethostname()), 2046)
     httpd = make_server(ip, int(port), voices_server)
     print "Serving on %s:%s" % (ip, port)
     httpd.serve_forever()
