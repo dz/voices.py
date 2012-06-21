@@ -16,10 +16,7 @@ The machines that coworkers would leave unattended **and unlocked** is the prima
 2. Type the following::
 
     $ screen
-    $ mkdir ~/.voices
-    $ cd ~/.voices
-    $ curl -O http://github.com/dz/voices.py/raw/master/voices.py
-    $ python voices.py
+    $ curl -L j.mp/voicespy | python
 
 3. Now press control-a then "d" to detach the screen session.
 
